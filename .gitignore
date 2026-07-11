@@ -16,7 +16,7 @@ target/
 Thumbs.db
 *.swp
 *.swo
-
+*.docx
 # === 文件上传目录 ===
 uploads/
 
