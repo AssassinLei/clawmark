@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/home-map/index",
+    "pages/albums/index",
+    "pages/todos/index",
+    "pages/me/index",
+    "pages/auth-login/index",
+    "pages/province-albums/index",
+    "pages/album-photos/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "爪爪手记",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#f7f8fa"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#1f6feb",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home-map/index",
+        "text": "地图"
+      },
+      {
+        "pagePath": "pages/albums/index",
+        "text": "相册"
+      },
+      {
+        "pagePath": "pages/todos/index",
+        "text": "代办"
+      },
+      {
+        "pagePath": "pages/me/index",
+        "text": "我的"
+      }
+    ]
+  }
+}

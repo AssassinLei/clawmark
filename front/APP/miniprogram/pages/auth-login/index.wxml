@@ -1,0 +1,7 @@
+<view class="container">
+  <view class="card">
+    <view class="title">微信登录</view>
+    <button type="primary" bindtap="handleWxLogin">一键登录</button>
+    <view class="subtle" style="margin-top: 16rpx;">首次登录将自动创建账号。</view>
+  </view>
+</view>

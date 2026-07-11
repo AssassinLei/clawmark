@@ -1,0 +1,45 @@
+<view class="container">
+  <view class="card">
+    <view class="title">双人代办</view>
+    <view class="filters">
+      <picker mode="selector" range="{{typeOptions}}" value="{{typeIndex}}" bindchange="onTypeChange">
+        <view class="subtle">类型：{{typeOptions[typeIndex]}}</view>
+      </picker>
+      <picker mode="selector" range="{{statusOptions}}" value="{{statusIndex}}" bindchange="onStatusChange">
+        <view class="subtle mt8">状态：{{statusOptions[statusIndex]}}</view>
+      </picker>
+      <view class="row-between mt10">
+        <view class="subtle">总数：{{total}}</view>
+        <button size="mini" type="primary" bindtap="onCreateTodo" loading="{{operating}}">新建代办</button>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{error}}" class="card mt20">
+    <text class="subtle">{{error}}</text>
+  </view>
+
+  <view wx:if="{{!loading && todos.length===0}}" class="card mt20">
+    <text class="subtle">暂无代办。</text>
+  </view>
+
+  <view wx:for="{{todos}}" wx:key="todo_id" class="card mt20">
+    <view class="row-between-start">
+      <view class="left-content">
+        <view class="item-title">{{item.title}}</view>
+        <view class="subtle mt6">{{item.description || '无描述'}}</view>
+        <view class="subtle mt6">{{item.type}} · {{item.status}} {{item.deadline ? ('· 截止 ' + item.deadline) : ''}}</view>
+      </view>
+    </view>
+    <view class="btn-row" wx:if="{{item.status!=='done'}}">
+      <button size="mini" type="primary" data-id="{{item.todo_id}}" bindtap="onComplete">完成</button>
+      <button size="mini" data-id="{{item.todo_id}}" bindtap="onUrge">催办</button>
+      <button size="mini" data-id="{{item.todo_id}}" data-title="{{item.title}}" bindtap="onEdit">编辑</button>
+      <button size="mini" type="warn" data-id="{{item.todo_id}}" bindtap="onDelete">删除</button>
+    </view>
+    <view class="btn-row" wx:if="{{item.status==='done'}}">
+      <button size="mini" data-id="{{item.todo_id}}" data-title="{{item.title}}" bindtap="onEdit">编辑</button>
+      <button size="mini" type="warn" data-id="{{item.todo_id}}" bindtap="onDelete">删除</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,45 @@
+<view class="container">
+  <view class="card">
+    <view class="title">中国旅行足迹</view>
+    <view class="subtle">按省份点亮（点击省份可查看该省份相册）</view>
+
+    <view class="stats-row">
+      <view class="stat-item">
+        <view class="stat-value">{{visitedProvinceCount}}</view>
+        <view class="subtle">点亮省份</view>
+      </view>
+      <view class="stat-item">
+        <view class="stat-value">{{visitedCityCount}}</view>
+        <view class="subtle">累计城市</view>
+      </view>
+    </view>
+
+  </view>
+
+  <view wx:if="{{error}}" class="card mt16">
+    <text class="subtle">{{error}}</text>
+  </view>
+
+  <view class="card mt16">
+    <view class="map-title">中国省份地图（示意）</view>
+    <view class="map-board">
+      <view
+        wx:for="{{provinces}}"
+        wx:key="code"
+        class="province {{item.visited ? 'visited' : 'normal'}}"
+        style="left:{{item.left}}%;top:{{item.top}}%;"
+        data-code="{{item.code}}"
+        data-name="{{item.name}}"
+        bindtap="onTapProvince"
+      >
+        <view wx:if="{{item.visited}}" class="province-halo"></view>
+        <text class="province-text">{{item.shortName}}</text>
+      </view>
+    </view>
+    <view class="legend">
+      <view class="legend-item"><view class="dot visited-dot"></view><text class="subtle">已点亮</text></view>
+      <view class="legend-item"><view class="dot normal-dot"></view><text class="subtle">未点亮</text></view>
+    </view>
+  </view>
+
+</view>

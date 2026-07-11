@@ -1,0 +1,2 @@
+.container { padding: 24rpx; }
+button { margin-top: 20rpx; }

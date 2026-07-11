@@ -1,0 +1,9 @@
+{
+  "desc": "ClawMark sitemap",
+  "rules": [
+    {
+      "action": "allow",
+      "page": "*"
+    }
+  ]
+}

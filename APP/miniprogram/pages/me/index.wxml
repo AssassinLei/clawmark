@@ -1,0 +1,45 @@
+<view class="container">
+  <view class="card" wx:if="{{user}}">
+    <view class="title">{{user.nickname || '微信用户'}}</view>
+    <view class="subtle">user_id：{{user.user_id}}</view>
+    <view class="subtle" style="margin-top:8rpx;">couple_id：{{user.couple_id || '未绑定'}}</view>
+    <view class="subtle" style="margin-top:8rpx;" wx:if="{{user.partner}}">
+      伴侣：{{user.partner.nickname}} · 在一起 {{user.together_days}} 天
+    </view>
+  </view>
+
+  <view wx:if="{{error}}" class="card" style="margin-top:20rpx;">
+    <text class="subtle">{{error}}</text>
+  </view>
+
+  <view class="card" style="margin-top:20rpx;" wx:if="{{user && !user.couple_id}}">
+    <view class="title" style="font-size:30rpx;">情侣绑定</view>
+
+    <view class="subtle" style="margin-bottom:10rpx;">我有邀请码：</view>
+    <input
+      class="invite-input"
+      placeholder="请输入对方邀请码"
+      value="{{inviteInput}}"
+      bindinput="onInviteInput"
+    />
+    <button size="mini" type="primary" bindtap="onBindInvite" loading="{{operating}}" style="margin-top:10rpx;">
+      绑定邀请码
+    </button>
+
+    <view class="subtle" style="margin-top:20rpx;margin-bottom:10rpx;">我来发邀请码：</view>
+    <button size="mini" type="primary" bindtap="onCreateInvite" loading="{{operating}}">生成邀请码</button>
+    <view class="subtle" style="margin-top:10rpx;" wx:if="{{inviteCode}}">邀请码：{{inviteCode}}</view>
+    <view class="subtle" style="margin-top:4rpx;" wx:if="{{inviteExpiresAt}}">过期时间：{{inviteExpiresAt}}</view>
+    <button size="mini" style="margin-top:10rpx;" bindtap="onCopyInvite" wx:if="{{inviteCode}}">复制邀请码</button>
+  </view>
+
+  <view class="card" style="margin-top:20rpx;" wx:if="{{user && user.couple_id}}">
+    <view class="title" style="font-size:30rpx;">情侣关系管理</view>
+    <view class="subtle">如需解除绑定，请谨慎操作。</view>
+    <button type="warn" bindtap="onUnbind" loading="{{operating}}" style="margin-top:12rpx;">解除情侣绑定</button>
+  </view>
+
+  <view class="card" style="margin-top:20rpx;">
+    <button type="warn" bindtap="onLogout">退出登录</button>
+  </view>
+</view>

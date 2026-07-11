@@ -1,0 +1,9 @@
+{
+  "name": "clawmark-miniprogram",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ClawMark 微信小程序前端",
+  "scripts": {
+    "start": "echo \"Use WeChat DevTools to build and upload\""
+  }
+}

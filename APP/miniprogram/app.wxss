@@ -1,0 +1,26 @@
+page {
+  background: #f7f8fa;
+  color: #1f2329;
+  font-size: 28rpx;
+}
+
+.container {
+  padding: 24rpx;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 24rpx;
+  box-shadow: 0 8rpx 24rpx rgba(31, 35, 41, 0.06);
+}
+
+.title {
+  font-size: 34rpx;
+  font-weight: 600;
+  margin-bottom: 16rpx;
+}
+
+.subtle {
+  color: #86909c;
+}

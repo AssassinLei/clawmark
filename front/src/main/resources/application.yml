@@ -1,0 +1,51 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: clawmark-api
+  profiles:
+    active: dev
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+  servlet:
+    multipart:
+      max-file-size: 35MB
+      max-request-size: 35MB
+
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  type-aliases-package: com.clawmark.api.infrastructure.entity
+  configuration:
+    map-underscore-to-camel-case: true
+
+jwt:
+  secret: change-me-to-very-strong-secret-key-change-me
+  issuer: clawmark
+  expire-days: 300
+
+wechat:
+  appid: ""
+  secret: ""
+  code2session-url: https://api.weixin.qq.com/sns/jscode2session
+
+upload:
+  local-dir: uploads
+  public-path-prefix: /uploads
+  public-base-url: http://localhost:8080
+
+
+app:
+  api-prefix: /api/v1
+  auth-whitelist:
+    - /api/v1/auth/login
+    - /api/v1/auth/refresh
+    - /api/v1/health
+    - /uploads/**
+    - /error
+
+
+todo:
+  expire-sync-cron: 0 */5 * * * ?

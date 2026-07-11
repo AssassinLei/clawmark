@@ -1,0 +1,10 @@
+.container { padding: 24rpx; }
+.mt20 { margin-top: 20rpx; }
+.mt10 { margin-top: 10rpx; }
+.mt8 { margin-top: 8rpx; }
+.mt6 { margin-top: 6rpx; }
+.row-between { display:flex; justify-content:space-between; align-items:center; }
+.row-between-start { display:flex; justify-content:space-between; align-items:flex-start; }
+.left-content { flex:1; }
+.item-title { font-size:30rpx; font-weight:600; }
+.btn-row { display:flex; flex-wrap:wrap; gap: 12rpx; margin-top: 14rpx; }

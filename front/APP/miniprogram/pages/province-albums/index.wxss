@@ -1,0 +1,8 @@
+.container { padding: 24rpx; }
+.mt16 { margin-top: 16rpx; }
+.mt8 { margin-top: 8rpx; }
+.row-between { display:flex; justify-content:space-between; align-items:center; }
+.album-title { font-size: 30rpx; font-weight: 600; }
+.count { font-size: 26rpx; color:#1f6feb; }
+.clickable:active { transform: scale(0.995); opacity: 0.95; }
+

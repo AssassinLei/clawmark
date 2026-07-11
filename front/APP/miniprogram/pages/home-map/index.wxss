@@ -1,0 +1,129 @@
+.container { padding: 24rpx; }
+.mt16 { margin-top: 16rpx; }
+.mt10 { margin-top: 10rpx; }
+
+.stats-row {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 14rpx;
+}
+.stat-item {
+  flex: 1;
+  background: #f2f3f5;
+  border-radius: 12rpx;
+  padding: 14rpx;
+}
+.stat-value {
+  font-size: 38rpx;
+  font-weight: 700;
+  color: #1f6feb;
+}
+
+
+
+.map-title {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.map-board {
+  position: relative;
+  margin-top: 14rpx;
+  height: 760rpx;
+  border-radius: 16rpx;
+  background: linear-gradient(180deg, #eef6ff 0%, #f8fbff 100%);
+  border: 1rpx solid #d8e8ff;
+  overflow: hidden;
+}
+
+.province {
+  position: absolute;
+  width: 46rpx;
+  height: 46rpx;
+  margin-left: -23rpx;
+  margin-top: -23rpx;
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.province.visited {
+  background: #1f6feb;
+  border: 2rpx solid #0f4fbf;
+  box-shadow: 0 0 0 4rpx rgba(31, 111, 235, 0.16);
+  animation: borderPulse 1.8s ease-in-out infinite;
+}
+.province.normal {
+  background: #dfe6ee;
+  border: 2rpx solid #c7d2df;
+}
+.province-text {
+  position: relative;
+  z-index: 2;
+  font-size: 20rpx;
+  font-weight: 600;
+  color: #fff;
+}
+.province.normal .province-text {
+  color: #4e5969;
+}
+
+.province-halo {
+  position: absolute;
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 20rpx;
+  border: 2rpx solid rgba(31, 111, 235, 0.46);
+  animation: haloPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes borderPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 4rpx rgba(31, 111, 235, 0.16);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 8rpx rgba(31, 111, 235, 0.24);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 4rpx rgba(31, 111, 235, 0.16);
+  }
+}
+
+@keyframes haloPulse {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.9);
+  }
+  70% {
+    opacity: 0;
+    transform: scale(1.18);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.18);
+  }
+}
+
+.legend {
+  margin-top: 12rpx;
+  display: flex;
+  gap: 20rpx;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+.dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+}
+.visited-dot { background: #1f6feb; }
+.normal-dot { background: #c7d2df; }
+
+

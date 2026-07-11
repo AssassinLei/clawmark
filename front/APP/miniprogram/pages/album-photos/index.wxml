@@ -1,0 +1,65 @@
+<view class="container">
+  <view class="card">
+    <view class="title">{{albumTitle || '相册照片'}}</view>
+    <view class="subtle">支持按年份筛选，按时间倒序。</view>
+
+    <view class="filter-row">
+      <input class="year-input" placeholder="年份，如 2026" value="{{year}}" bindinput="onYearInput" />
+      <button size="mini" type="primary" bindtap="onApplyFilter">筛选</button>
+      <button size="mini" bindtap="onClearFilter">重置</button>
+    </view>
+  </view>
+
+  <view class="card mt16">
+    <view class="title upload-title">上传照片</view>
+    <view class="upload-row">
+      <button size="mini" type="primary" bindtap="onChooseImage">选择图片</button>
+      <view class="subtle" wx:if="{{selectedImages.length>0}}">已选 {{selectedImages.length}} 张</view>
+      <view class="subtle" wx:if="{{selectedImages.length===0}}">未选择</view>
+    </view>
+
+    <view wx:if="{{selectedImages.length>0}}" class="selected-grid mt16">
+      <image wx:for="{{selectedImages}}" wx:key="path" class="selected-thumb" src="{{item.path}}" mode="aspectFill" />
+    </view>
+
+    <view class="field-label mt16">拍摄日期</view>
+    <picker mode="date" value="{{shotDate}}" bindchange="onShotDateChange">
+      <view class="date-picker">{{shotDate}}</view>
+    </picker>
+
+    <view class="field-label mt16">城市信息由相册自动带入，无需填写</view>
+
+    <button class="mt16" type="primary" loading="{{uploading}}" bindtap="onUploadPhoto">上传到当前相册</button>
+
+  </view>
+
+  <view wx:if="{{error}}" class="card mt16">
+    <text class="subtle">{{error}}</text>
+  </view>
+
+  <view wx:if="{{!loading && photos.length===0}}" class="card mt16">
+    <text class="subtle">暂无照片。</text>
+  </view>
+
+  <view wx:for="{{photos}}" wx:key="photo_id" class="card mt16 photo-card">
+    <image class="thumb" src="{{item.thumbnail_url || item.original_url}}" mode="aspectFill" bindtap="onPreviewImage" data-src="{{item.original_url || item.thumbnail_url}}" />
+    <view class="photo-meta">
+      <view class="photo-title">{{item.city_name}}</view>
+      <view class="subtle">拍摄日期：{{item.shot_date}}</view>
+      <view class="subtle">评论：{{item.comment_count || 0}}</view>
+    </view>
+    <button
+      class="danger-mini corner-delete"
+      size="mini"
+      type="default"
+      plain="true"
+      loading="{{deletingPhotoId===item.photo_id}}"
+      data-id="{{item.photo_id}}"
+      catchtap="onDeletePhoto"
+    >删除照片</button>
+  </view>
+
+  <view wx:if="{{loadingMore}}" class="loading-more">加载中...</view>
+  <view wx:if="{{!loading && !hasMore && photos.length>0}}" class="loading-more subtle">没有更多了</view>
+</view>
+

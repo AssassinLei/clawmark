@@ -1,0 +1,32 @@
+<view class="container">
+  <view class="card">
+    <view class="title">{{albumTitle || '相册照片'}}</view>
+    <view class="subtle">支持按年份筛选，按时间倒序。</view>
+
+    <view class="filter-row">
+      <input class="year-input" placeholder="年份，如 2026" value="{{year}}" bindinput="onYearInput" />
+      <button size="mini" type="primary" bindtap="onApplyFilter">筛选</button>
+      <button size="mini" bindtap="onClearFilter">重置</button>
+    </view>
+  </view>
+
+  <view wx:if="{{error}}" class="card mt16">
+    <text class="subtle">{{error}}</text>
+  </view>
+
+  <view wx:if="{{!loading && photos.length===0}}" class="card mt16">
+    <text class="subtle">暂无照片。</text>
+  </view>
+
+  <view wx:for="{{photos}}" wx:key="photo_id" class="card mt16">
+    <image class="thumb" src="{{item.thumbnail_url || item.original_url}}" mode="aspectFill" />
+    <view class="photo-meta">
+      <view class="photo-title">{{item.city_name}}</view>
+      <view class="subtle">拍摄日期：{{item.shot_date}}</view>
+      <view class="subtle">评论：{{item.comment_count || 0}}</view>
+    </view>
+  </view>
+
+  <view wx:if="{{loadingMore}}" class="loading-more">加载中...</view>
+  <view wx:if="{{!loading && !hasMore && photos.length>0}}" class="loading-more subtle">没有更多了</view>
+</view>

@@ -1,0 +1,11 @@
+.container { padding: 24rpx; }
+
+.invite-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: #f2f3f5;
+  border: 1rpx solid #e5e6eb;
+  border-radius: 12rpx;
+  padding: 16rpx 20rpx;
+  font-size: 28rpx;
+}

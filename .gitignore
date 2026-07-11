@@ -1,0 +1,24 @@
+# === Maven / Java ===
+target/
+*.class
+*.jar
+*.war
+!.mvn/wrapper/maven-wrapper.jar
+
+# === IDE ===
+.idea/
+*.iml
+.vscode/
+!.vscode/settings.json
+
+# === OS ===
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# === 文件上传目录 ===
+uploads/
+
+# === 敏感配置（包含数据库密码、微信密钥等，切勿提交） ===
+application-dev.yml

@@ -1,0 +1,34 @@
+<view class="container">
+  <view class="card">
+    <view class="title">相册列表</view>
+    <picker mode="selector" range="{{typeOptions}}" value="{{typeIndex}}" bindchange="onTypeChange">
+      <view class="subtle">筛选类型：{{typeOptions[typeIndex]}}</view>
+    </picker>
+    <view class="row-between mt10">
+      <view class="subtle">总数：{{total}}</view>
+      <button size="mini" type="primary" bindtap="onCreateAlbum" loading="{{creating}}">新建相册</button>
+    </view>
+  </view>
+
+  <view wx:if="{{error}}" class="card mt20">
+    <text class="subtle">{{error}}</text>
+  </view>
+
+  <view wx:if="{{!loading && albums.length===0}}" class="card mt20">
+    <text class="subtle">暂无相册数据。</text>
+  </view>
+
+  <view wx:for="{{albums}}" wx:key="album_id" class="card mt20">
+    <view class="row-between">
+      <view>
+        <view class="item-title">{{item.title}}</view>
+        <view class="subtle">类型：{{item.type}} {{item.city_code ? ('· ' + item.city_code) : ''}}</view>
+        <view class="subtle">创建时间：{{item.created_at}}</view>
+      </view>
+      <view class="count">{{item.photo_count}} 张</view>
+    </view>
+  </view>
+
+  <view wx:if="{{loadingMore}}" class="loading-more">加载中...</view>
+  <view wx:if="{{!loading && !hasMore && albums.length>0}}" class="loading-more subtle">没有更多了</view>
+</view>
